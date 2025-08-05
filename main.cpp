@@ -1,6 +1,6 @@
 #include <iostream>
-
 using namespace std;
+
 class Node{
    public:
        int value;
@@ -17,46 +17,46 @@ void printList(Node *n){
 
 // add a new node at the first
 void addNewNodeAtTheFront(Node** newHeadNode, int newValue){
-      // 1. prepare a new node
+      // prepare a new node
       Node *newNode = new Node();
       newNode->value = newValue;
-      //2. put it in the current head
+      //put it in the current head
       newNode->nextNode = *newHeadNode;
-      // 3. move head of the list to the newnNode
+      // move head of the list to the newnNode
       *newHeadNode = newNode;
 }
 
 // add a new node to the last
 void addNewNodeToTheLast(Node ** newTailNode, int newValue){
- // 1. prepare a new node
+ // prepare a new node
      Node* newNode = new Node();
      newNode->value = newValue;
      newNode->nextNode = NULL;
- // 2. if linked list is empty, newNode will be a headNode
+ // if linked list is empty, newNode will be a headNode
   if(*newTailNode == NULL){
     *newTailNode = newNode;
     return;
   }
- // 3. find the last node
+ //  find the last node
    Node* newLastNode = *newTailNode;
    while(newLastNode ->nextNode != NULL){
       newLastNode= newLastNode->nextNode;
    }
- // 4. insert newNode after last node(at the node)
+ //  insert newNode after last node(at the node)
  newLastNode->nextNode =newNode ;
 }
 
 // add new node
 void addNewNode( Node *previosNode, int newValue){
-   // 1. check if previos node is NULL
+   // check if previos node is NULL
     if(previosNode == NULL){
          cout<<"previos node cannot be NULL";
          return;
     }
-   // 2. prepare a newNode
+    // prepare a new node
    Node *newNode = new Node();
    newNode->value = newValue;
-   // 3. Insert newNode after previos
+   // Insert newNode after previos
    newNode->nextNode = previosNode->nextNode;
    previosNode->nextNode = newNode;
 }
@@ -75,13 +75,14 @@ int main()
      thirdNode->value = 3;
      thirdNode->nextNode = NULL;
 
-    // addNewNodeAtTheFront(&headNode, 0);
      addNewNodeAtTheFront(&headNode, 100);
 
-    addNewNode(headNode, 10000);
-    addNewNode(headNode, 20000);
+     addNewNode(headNode, 10000);
+   
      addNewNodeToTheLast(&headNode,400);
+   
      printList(headNode);
 
     return 0;
 }
+
